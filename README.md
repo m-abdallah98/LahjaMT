@@ -1,6 +1,6 @@
 # LahjaMT: English-to-Arabic Dialect Machine Translation
 
-This repository contains experiments for **English → Arabic dialect machine translation**, with the broader goal of building and evaluating context-aware translation systems for dialectal Arabic.
+This repository contains experiments and comparisons of baselines behavior and LoRA adaptation for  **English → Arabic dialect machine translation**, with the broader goal of building and evaluating context-aware translation systems for dialectal Arabic.
 
 The current experiments focus on the **Egyptian Arabic (EG) subset**, but the intended direction is broader English-to-dialectal-Arabic MT.
 
@@ -81,17 +81,5 @@ The current results suggest that model adaptation behaves differently depending 
 
 This supports the conclusion that fine-tuning is not automatically beneficial for every base model, especially when the base model already has strong translation and instruction-following abilities.
 
-
-## Notes
-
-Some fine-tuned Gemma outputs contained chat-template artifacts such as:
-
-```text
-<turn|>
-```
-
-A post-processing step was applied to clean these artifacts before final metric computation.
-
-The current results are **not claimed as SOTA**. They are controlled experiments comparing baseline behavior and LoRA adaptation for English-to-dialectal-Arabic MT, currently evaluated on the EG subset.
 
 
