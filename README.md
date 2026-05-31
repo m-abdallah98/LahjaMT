@@ -1,4 +1,3 @@
-````markdown
 # LahjaMT: English-to-Arabic Dialect Machine Translation
 
 This repository contains experiments for **English → Arabic dialect machine translation**, with the broader goal of building and evaluating context-aware translation systems for dialectal Arabic.
@@ -39,12 +38,12 @@ Best systems are compared against each other:
 
 ## Results on EG Subset
 
-| System                    | Type                      | Examples |      BLEU |      chrF |    chrF++ | Best Step | Best Eval Loss |
-| ------------------------- | ------------------------- | -------: | --------: | --------: | --------: | --------: | -------------: |
-| Gemma-4-E2B-it Base       | Baseline / no fine-tuning |     1118 | **14.55** | **44.96** | **41.91** |         — |              — |
-| Gemma-4-E2B-it FNN-r8 MLP | LoRA fine-tuned           |     1118 |     13.37 |     43.16 |     40.14 |      2500 |         2.9185 |
-| Qwen3.5-2B LoRA all-r16   | LoRA fine-tuned           |     1118 |      8.56 |     37.91 |     34.57 |       600 |         2.0151 |
-| Qwen3.5-2B Base           | Baseline / no fine-tuning |     1118 |      2.37 |     26.52 |     23.24 |         — |              — |
+| System                    | Type                      | Examples |      BLEU |      chrF |    chrF++ |
+| ------------------------- | ------------------------- | -------: | --------: | --------: | --------: |
+| Gemma-4-E2B-it Base       | Baseline / no fine-tuning |     1118 | **14.55** | **44.96** | **41.91** |
+| Gemma-4-E2B-it FNN-r8 MLP | LoRA fine-tuned           |     1118 |     13.37 |     43.16 |     40.14 |
+| Qwen3.5-2B LoRA all-r16   | LoRA fine-tuned           |     1118 |      8.56 |     37.91 |     34.57 |
+| Qwen3.5-2B Base           | Baseline / no fine-tuning |     1118 |      2.37 |     26.52 |     23.24 |
 
 ## Main Observations
 
@@ -69,8 +68,8 @@ For **Gemma-4-E2B-it**, the baseline was already strong, and MLP/FNN-r8 LoRA sli
 
 ```text
 Gemma base BLEU: 14.55
-```Gemma FNN-r8 BLEU: 13.37
-``````
+Gemma FNN-r8 BLEU: 13.37
+```
 
 ## Interpretation
 
@@ -95,5 +94,4 @@ A post-processing step was applied to clean these artifacts before final metric 
 
 The current results are **not claimed as SOTA**. They are controlled experiments comparing baseline behavior and LoRA adaptation for English-to-dialectal-Arabic MT, currently evaluated on the EG subset.
 
-```
-```
+
