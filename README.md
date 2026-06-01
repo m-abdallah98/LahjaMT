@@ -14,7 +14,7 @@ The current prompt style is:
 Translate into natural Egyptian Arabic dialect.
 Do not use Modern Standard Arabic unless unavoidable.
 Return only the Arabic translation.
-````
+```
 
 For now, the evaluated dialect is **Egyptian Arabic**, but the same framework is to be extended to the rest of dialects.
 
@@ -53,31 +53,35 @@ BLEU measures how much the generated translation overlaps with the reference tra
 
 Higher BLEU is better.
 
-```text
-BLEU = BP × exp( Σ_{n=1}^{N} w_n log p_n )
-````
+$$
+\mathrm{BLEU}
+=
+\mathrm{BP}\cdot
+\exp\left(
+\sum_{n=1}^{N} w_n \log p_n
+\right)
+$$
 
 where:
 
-```text
-p_n = modified precision for n-grams of order n
-w_n = weight for each n-gram order, usually 1/N
-BP  = brevity penalty
-```
+- $p_n$ is the modified precision for n-grams of order $n$.
+- $w_n$ is the weight assigned to n-gram order $n$, usually $\frac{1}{N}$.
+- $\mathrm{BP}$ is the brevity penalty.
 
 The brevity penalty is:
 
-```text
-BP = 1              if c > r
-BP = exp(1 - r/c)  if c <= r
-```
+$$
+\mathrm{BP} =
+\begin{cases}
+1, & c > r \\
+\exp\left(1 - \frac{r}{c}\right), & c \le r
+\end{cases}
+$$
 
 where:
 
-```text
-c = generated translation length
-r = reference translation length
-```
+- $c$ is the generated translation length.
+- $r$ is the reference translation length.
 
 ---
 
@@ -87,19 +91,18 @@ chrF is a character n-gram F-score between the generated translation and the ref
 
 Higher chrF is better.
 
-
-```text
-chrF_β = (1 + β²) × (chrP × chrR) / (β² × chrP + chrR) 
-```
-
+$$
+\mathrm{chrF}_{\beta}
+=
+\frac{(1+\beta^2)\cdot \mathrm{chrP}\cdot \mathrm{chrR}}
+{\beta^2\cdot \mathrm{chrP}+\mathrm{chrR}}
+$$
 
 where:
 
-```text
-chrP = character n-gram precision
-chrR = character n-gram recall
-β    = recall weight, commonly β = 2
-```
+- $\mathrm{chrP}$ is character n-gram precision.
+- $\mathrm{chrR}$ is character n-gram recall.
+- $\beta$ is the recall weight, commonly $\beta=2$.
 
 ---
 
@@ -109,15 +112,15 @@ chrF++ extends chrF by combining character n-gram matching with word n-gram matc
 
 Higher chrF++ is better.
 
-```text
-chrF++ = F-score over character n-grams and word n-grams
-```
-
-Conceptually:
-
-```text
-chrF++ = F_β(char_ngram_precision/recall + word_ngram_precision/recall)
-```
+$$
+\mathrm{chrF}^{++}
+=
+F_{\beta}\left(
+\text{character n-gram precision/recall}
++
+\text{word n-gram precision/recall}
+\right)
+$$
 
 ---
 
@@ -129,22 +132,25 @@ In these experiments, semantic similarity is computed using E5-large embeddings 
 
 Higher semantic similarity is better.
 
-```text
-similarity = cos(e_pred, e_ref)
-```
+$$
+\mathrm{similarity}
+=
+\cos\left(\mathbf{e}_{\mathrm{pred}},\mathbf{e}_{\mathrm{ref}}\right)
+$$
 
 where:
 
-```text
-e_pred = embedding of the generated translation
-e_ref  = embedding of the reference translation
-```
+- $\mathbf{e}_{\mathrm{pred}}$ is the embedding of the generated translation.
+- $\mathbf{e}_{\mathrm{ref}}$ is the embedding of the reference translation.
 
 Cosine similarity is computed as:
 
-```text
-cos(e_pred, e_ref) = (e_pred · e_ref) / (||e_pred|| ||e_ref||)
-```
+$$
+\cos\left(\mathbf{e}_{\mathrm{pred}},\mathbf{e}_{\mathrm{ref}}\right)
+=
+\frac{\mathbf{e}_{\mathrm{pred}}\cdot\mathbf{e}_{\mathrm{ref}}}
+{\left\lVert\mathbf{e}_{\mathrm{pred}}\right\rVert\left\lVert\mathbf{e}_{\mathrm{ref}}\right\rVert}
+$$
 
 
 
@@ -183,6 +189,3 @@ The current results suggest that model adaptation behaves differently depending 
 **Gemma-4-E2B-it** already performs strongly as a baseline, so small-data fine-tuning may cause slight degradation rather than improvement.
 
 This supports the conclusion that fine-tuning is not automatically beneficial for every base model, especially when the base model already has strong translation and instruction-following abilities.
-
-
-
