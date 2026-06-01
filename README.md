@@ -116,9 +116,9 @@ Higher chrF++ is better.
 \mathrm{chrF}^{++}
 =
 F_{\beta}\left(
-\text{character n-gram precision/recall}
+\text{character n-gram precision and recall}
 +
-\text{word n-gram precision/recall}
+\text{word n-gram precision and recall}
 \right)
 ```
 
