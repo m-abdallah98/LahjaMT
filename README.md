@@ -126,6 +126,36 @@ where:
 - $R_{++}$ is the combined recall from character n-gram matches and word n-gram matches.
 - $\beta$ controls the importance of recall, commonly $\beta = 2$.
 
+Example of using 6-gram on character level and 2-gram on the word level:
+
+```math
+P_{++}
+=
+\frac{
+\sum_{n=1}^{6} P_{\text{char},n}
++
+\sum_{n=1}^{2} P_{\text{word},n}
+}
+{8}
+```
+
+```math
+R_{++}
+=
+\frac{
+\sum_{n=1}^{6} R_{\text{char},n}
++
+\sum_{n=1}^{2} R_{\text{word},n}
+}
+{8}
+```
+
+```math
+\mathrm{chrF}^{++}_{\beta}
+=
+\frac{(1+\beta^2)\,P_{++}\,R_{++}}
+{\beta^2 P_{++}+R_{++}}
+```
 
 ---
 
