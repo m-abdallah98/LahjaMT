@@ -88,12 +88,12 @@ chrF is a character n-gram F-score between the generated translation and the ref
 Higher chrF is better.
 
 
-</center> $chrF_β = (1 + β²) × (chrP × chrR) / (β² × chrP + chrR)$<center>
+<center/> $ chrF_β = (1 + β²) × (chrP × chrR) / (β² × chrP + chrR) $</center>
 
 
 where:
 
-```text
+```latex
 chrP = character n-gram precision
 chrR = character n-gram recall
 β    = recall weight, commonly β = 2
