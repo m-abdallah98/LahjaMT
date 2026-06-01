@@ -53,14 +53,14 @@ BLEU measures how much the generated translation overlaps with the reference tra
 
 Higher BLEU is better.
 
-$$
+```math
 \mathrm{BLEU}
 =
 \mathrm{BP}\cdot
 \exp\left(
 \sum_{n=1}^{N} w_n \log p_n
 \right)
-$$
+```
 
 where:
 
@@ -70,13 +70,13 @@ where:
 
 The brevity penalty is:
 
-$$
+```math
 \mathrm{BP} =
 \begin{cases}
 1, & c > r \\
 \exp\left(1 - \frac{r}{c}\right), & c \le r
 \end{cases}
-$$
+```
 
 where:
 
@@ -91,12 +91,12 @@ chrF is a character n-gram F-score between the generated translation and the ref
 
 Higher chrF is better.
 
-$$
+```math
 \mathrm{chrF}_{\beta}
 =
 \frac{(1+\beta^2)\cdot \mathrm{chrP}\cdot \mathrm{chrR}}
 {\beta^2\cdot \mathrm{chrP}+\mathrm{chrR}}
-$$
+```
 
 where:
 
@@ -112,7 +112,7 @@ chrF++ extends chrF by combining character n-gram matching with word n-gram matc
 
 Higher chrF++ is better.
 
-$$
+```math
 \mathrm{chrF}^{++}
 =
 F_{\beta}\left(
@@ -120,7 +120,8 @@ F_{\beta}\left(
 +
 \text{word n-gram precision/recall}
 \right)
-$$
+```
+
 
 ---
 
@@ -132,11 +133,11 @@ In these experiments, semantic similarity is computed using E5-large embeddings 
 
 Higher semantic similarity is better.
 
-$$
+```math
 \mathrm{similarity}
 =
 \cos\left(\mathbf{e}_{\mathrm{pred}},\mathbf{e}_{\mathrm{ref}}\right)
-$$
+```
 
 where:
 
@@ -145,12 +146,13 @@ where:
 
 Cosine similarity is computed as:
 
-$$
+```math
 \cos\left(\mathbf{e}_{\mathrm{pred}},\mathbf{e}_{\mathrm{ref}}\right)
 =
 \frac{\mathbf{e}_{\mathrm{pred}}\cdot\mathbf{e}_{\mathrm{ref}}}
 {\left\lVert\mathbf{e}_{\mathrm{pred}}\right\rVert\left\lVert\mathbf{e}_{\mathrm{ref}}\right\rVert}
-$$
+```
+
 
 
 
