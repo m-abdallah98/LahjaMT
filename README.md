@@ -1,4 +1,4 @@
-# LahjaMT: English-to-Arabic Dialect Machine Translation
+# LahjaMT: English-to-Arabic Context-Aware Dialect Machine Translation
 
 This repository contains experiments and comparisons of baselines behavior and LoRA adaptation for  **English → Arabic dialect machine translation**, with the broader goal of building and evaluating context-aware translation systems for dialectal Arabic.
 
