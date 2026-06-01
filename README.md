@@ -88,7 +88,9 @@ chrF is a character n-gram F-score between the generated translation and the ref
 Higher chrF is better.
 
 
-<center/> $ chrF_β = (1 + β²) × (chrP × chrR) / (β² × chrP + chrR) $</center>
+```latex
+chrF_β = (1 + β²) × (chrP × chrR) / (β² × chrP + chrR) 
+```
 
 
 where:
