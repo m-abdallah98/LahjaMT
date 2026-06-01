@@ -108,19 +108,23 @@ where:
 
 ### chrF++
 
-chrF++ extends chrF by combining character n-gram matching with word n-gram matching. It keeps the flexibility of character-level evaluation while adding sensitivity to word-level correctness.
+chrF++ extends chrF by using both **character n-gram matching** and **word n-gram matching**.
+It keeps the flexibility of character-level evaluation while adding sensitivity to word-level correctness.
 
 Higher chrF++ is better.
 
 ```math
-\mathrm{chrF}^{++}
+\mathrm{chrF}^{++}_{\beta}
 =
-F_{\beta}\left(
-\text{character n-gram precision and recall}
-+
-\text{word n-gram precision and recall}
-\right)
+\frac{(1+\beta^2)\,P_{++}\,R_{++}}
+{\beta^2 P_{++}+R_{++}}
 ```
+
+where:
+
+- $P_{++}$ is the combined precision from character n-gram matches and word n-gram matches.
+- $R_{++}$ is the combined recall from character n-gram matches and word n-gram matches.
+- $\beta$ controls the importance of recall, commonly $\beta = 2$.
 
 
 ---
