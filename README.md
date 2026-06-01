@@ -120,13 +120,7 @@ Higher chrF++ is better.
 {\beta^2 P_{++}+R_{++}}
 ```
 
-where:
-
-- $P_{++}$ is the combined precision from character n-gram matches and word n-gram matches.
-- $R_{++}$ is the combined recall from character n-gram matches and word n-gram matches.
-- $\beta$ controls the importance of recall, commonly $\beta = 2$.
-
-Example of using 6-gram on character level and 2-gram on the word level:
+An example of using 6-gram on character level and 2-gram on the word level:
 
 ```math
 P_{++}
@@ -156,6 +150,16 @@ R_{++}
 \frac{(1+\beta^2)\,P_{++}\,R_{++}}
 {\beta^2 P_{++}+R_{++}}
 ```
+
+where:
+
+- $P_{\text{char},n}$ is the precision for character n-grams of order $n$.
+- $R_{\text{char},n}$ is the recall for character n-grams of order $n$.
+- $P_{\text{word},n}$ is the precision for word n-grams of order $n$.
+- $R_{\text{word},n}$ is the recall for word n-grams of order $n$.
+- $P_{++}$ and $R_{++}$ are the averaged precision and recall over both character and word n-grams.
+- $\beta$ controls the importance of recall, commonly $\beta = 2$.
+
 
 ---
 
