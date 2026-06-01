@@ -45,6 +45,106 @@ Best systems are compared against each other:
 | Qwen3.5-2B LoRA all-r16  | LoRA fine-tuned          |8.56 | 37.91 | 34.57 | 0.943186 |
 | Qwen3.5-2B Base          | Baseline / no fine-tuning|2.37 | 26.52 | 23.24 | 0.923324 |
 
+### Evaluation Metrics
+
+### BLEU
+
+BLEU measures how much the generated translation overlaps with the reference translation at the word n-gram level. It mainly rewards exact word/phrase matches and applies a brevity penalty to avoid overly short translations.
+
+Higher BLEU is better.
+
+```text
+BLEU = BP × exp( Σ_{n=1}^{N} w_n log p_n )
+````
+
+where:
+
+```text
+p_n = modified precision for n-grams of order n
+w_n = weight for each n-gram order, usually 1/N
+BP  = brevity penalty
+```
+
+The brevity penalty is:
+
+```text
+BP = 1              if c > r
+BP = exp(1 - r/c)  if c <= r
+```
+
+where:
+
+```text
+c = generated translation length
+r = reference translation length
+```
+
+---
+
+### chrF
+
+chrF is a character n-gram F-score between the generated translation and the reference. It is useful for Arabic and other morphologically rich languages because it can reward partial word overlap even when exact word matching fails.
+
+Higher chrF is better.
+
+```text
+chrF_β = (1 + β²) × (chrP × chrR) / (β² × chrP + chrR)
+```
+
+where:
+
+```text
+chrP = character n-gram precision
+chrR = character n-gram recall
+β    = recall weight, commonly β = 2
+```
+
+---
+
+### chrF++
+
+chrF++ extends chrF by combining character n-gram matching with word n-gram matching. It keeps the flexibility of character-level evaluation while adding sensitivity to word-level correctness.
+
+Higher chrF++ is better.
+
+```text
+chrF++ = F-score over character n-grams and word n-grams
+```
+
+Conceptually:
+
+```text
+chrF++ = F_β(char_ngram_precision/recall + word_ngram_precision/recall)
+```
+
+---
+
+### Semantic Similarity
+
+Semantic similarity measures how close the generated translation and the reference are in embedding space. Unlike BLEU and chrF, it can capture meaning similarity even when the wording is different.
+
+In these experiments, semantic similarity is computed using E5-large embeddings and cosine similarity.
+
+Higher semantic similarity is better.
+
+```text
+similarity = cos(e_pred, e_ref)
+```
+
+where:
+
+```text
+e_pred = embedding of the generated translation
+e_ref  = embedding of the reference translation
+```
+
+Cosine similarity is computed as:
+
+```text
+cos(e_pred, e_ref) = (e_pred · e_ref) / (||e_pred|| ||e_ref||)
+```
+
+
 
 ## Main Observations
 
