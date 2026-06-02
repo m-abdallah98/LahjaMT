@@ -43,6 +43,7 @@ Best systems are compared against each other:
 | Gemma-4-E2B-it Base      | Baseline / no fine-tuning| **14.55** | **44.96** | **41.91** | **0.952464** |
 | Gemma-4-E2B-it FNN-r8 MLP| LoRA fine-tuned          | 13.37 | 43.16 | 40.14 | 0.949918 |
 | Qwen3.5-2B LoRA all-r16  | LoRA fine-tuned          | 8.56 | 37.91 | 34.57 | 0.943186 |
+| Qwen3-4B LoRA complete-2shot all-r16 | LoRA fine-tuned | 10.11 | 38.16 | 35.44 | 0.944603 |
 | Qwen3-4B Base            | Baseline / no fine-tuning| 2.59 | 26.77 | 23.48 | 0.924230 |
 | Qwen3.5-2B Base          | Baseline / no fine-tuning| 2.37 | 26.52 | 23.24 | 0.923324 |
 
