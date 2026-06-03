@@ -46,6 +46,7 @@ Best systems are compared against each other:
 | Qwen3-4B LoRA complete-2shot all-r16 | 10.11 | 38.16 | 35.44 | 0.944603 |
 | Qwen3-4B Base            | 2.59 | 26.77 | 23.48 | 0.924230 |
 | Qwen3.5-2B Base          | 2.37 | 26.52 | 23.24 | 0.923324 |
+| Qwen3-4B Base few-shot prompting   | 2.33 | 25.91 | 22.80 | 0.920058 |
 
 ### Evaluation Metrics
 
