@@ -43,7 +43,7 @@ Best systems are compared against each other:
 | Gemma-4-E2B-it Base      |**14.55** | **44.96** | **41.91** | **0.952464** |
 | Gemma-4-E2B-it FNN-r8 MLP| 13.37 | 43.16 | 40.14 | 0.949918 |
 | Qwen3.5-2B LoRA all-r16  | 8.56 | 37.91 | 34.57 | 0.943186 |
-| Qwen3-4B LoRA complete-2shot all-r16 | 10.11 | 38.16 | 35.44 | 0.944603 |
+| Qwen3-4B LoRA Base 2shot all-r16 | 10.11 | 38.16 | 35.44 | 0.944603 |
 | Qwen3-4B Base            | 2.59 | 26.77 | 23.48 | 0.924230 |
 | Qwen3.5-2B Base          | 2.37 | 26.52 | 23.24 | 0.923324 |
 | Qwen3-4B Base few-shot prompting   | 2.33 | 25.91 | 22.80 | 0.920058 |
