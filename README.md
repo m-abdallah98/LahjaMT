@@ -47,6 +47,7 @@ Best systems are compared against each other:
 | Qwen3-4B Base            | 2.59 | 26.77 | 23.48 | 0.924230 |
 | Qwen3.5-2B Base          | 2.37 | 26.52 | 23.24 | 0.923324 |
 | Qwen3-4B Base few-shot prompting   | 2.33 | 25.91 | 22.80 | 0.920058 |
+| Qwen3-4B instruct few-shot prompting   | 3.19 | 28.44 | 25.11 | 0.929894 |		
 
 ### Evaluation Metrics
 
