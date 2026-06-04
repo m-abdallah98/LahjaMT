@@ -44,10 +44,11 @@ Best systems are compared against each other:
 | Gemma-4-E2B-it FNN-r8 MLP| 13.37 | 43.16 | 40.14 | 0.949918 |
 | Qwen3.5-2B LoRA all-r16  | 8.56 | 37.91 | 34.57 | 0.943186 |
 | Qwen3-4B LoRA Base 2shot all-r16 | 10.11 | 38.16 | 35.44 | 0.944603 |
+| Qwen3-4B LoRA Base zero-shot prompting all-r16 | 9.83 | 37.89 | 35.05 | 0.944039 |
 | Qwen3-4B Base            | 2.59 | 26.77 | 23.48 | 0.924230 |
 | Qwen3.5-2B Base          | 2.37 | 26.52 | 23.24 | 0.923324 |
 | Qwen3-4B Base few-shot prompting   | 2.33 | 25.91 | 22.80 | 0.920058 |
-| Qwen3-4B instruct few-shot prompting   | 3.19 | 28.44 | 25.11 | 0.929894 |		
+| Qwen3-4B instruct few-shot prompting   | 3.19 | 28.44 | 25.11 | 0.929894 |
 
 ### Evaluation Metrics
 
@@ -195,41 +196,44 @@ Cosine similarity is computed as:
 {\left\lVert\mathbf{e}_{\mathrm{pred}}\right\rVert\left\lVert\mathbf{e}_{\mathrm{ref}}\right\rVert}
 ```
 
+## Learning Curves
 
+The following curves compare the training dynamics of the tested LoRA fine-tuning experiments at 2,000 steps.
+
+### Evaluation Loss
+
+![Evaluation Loss Curves](assets/learning_curves/eval_loss_curves.png)
+
+### Training Loss
+
+![Training Loss Curves](assets/lurning_curves/training_loss_curves.png)
 
 
 ## Main Observations
 
-The strongest current system on the EG subset is the **Gemma-4-E2B-it baseline**, without fine-tuning:
+1. **Gemma-4-E2B-it Base is the strongest system overall.**  
+   It achieves the best scores across all metrics: **BLEU = 14.55**, **chrF = 44.96**, **chrF++ = 41.91**, and **Semantic Similarity = 0.952464** (however it is 5.1 B).
 
-```text
-BLEU   = 14.55
-chrF   = 44.96
-chrF++ = 41.91
-```
+2. **Gemma fine-tuning did not improve over the base model.**  
+   The Gemma FNN-r8 MLP LoRA model performs slightly lower than the Gemma base model, with **BLEU dropping from 14.55 to 13.37** partly due to conservative lr against other experiments and partly due to small-data finetuning regarding the params number specially with strong base model.
 
-Fine-tuning had different effects depending on the model.
+3. **LoRA fine-tuning strongly improves Qwen models.**  
+   Qwen3.5-2B improves from **BLEU = 2.37** to **8.56**, while Qwen3-4B improves from **BLEU = 2.59** to **10.11** with the best LoRA 2-shot setup.
 
-For **Qwen3.5-2B**, LoRA produced a large improvement:
+4. **Few-shot prompting alone is not enough.**  
+   Qwen3-4B few-shot prompting without fine-tuning remains weak, with **BLEU = 2.33** for base few-shot and **3.19** for instruct few-shot, showing that the main improvement comes from LoRA fine-tuning.
 
-```text
-Qwen base BLEU: 2.37
-Qwen LoRA BLEU: 8.56
-```
 
-For **Gemma-4-E2B-it**, the baseline was already strong, and MLP/FNN-r8 LoRA slightly degraded performance:
 
-```text
-Gemma base BLEU: 14.55
-Gemma FNN-r8 BLEU: 13.37
-```
 
 ## Interpretation
 
-The current results suggest that model adaptation behaves differently depending on the base model suggesting that data size may be a critical player in the finetuning process.
 
-**Qwen3.5-2B** starts from a weak baseline, so LoRA fine-tuning gives a clear improvement.
+1. **Qwen models benefit clearly from LoRA fine-tuning.**  
+   Since Qwen starts from a weak baseline, fine-tuning gives large improvements in BLEU, chrF, chrF++, and semantic similarity.
 
-**Gemma-4-E2B-it** already performs strongly as a baseline, so small-data fine-tuning may cause slight degradation rather than improvement.
+2. **Gemma is already strong without fine-tuning.**  
+   The Gemma base model performs best overall, so small-data LoRA fine-tuning slightly reduces performance instead of improving it.
 
-This supports the conclusion that fine-tuning is not automatically beneficial for every base model, especially when the base model already has strong translation and instruction-following abilities.
+3. **Data size may be a critical factor.**  
+   These results suggest that fine-tuning is not automatically beneficial, especially when the base model already has strong translation and instruction-following ability.
