@@ -206,7 +206,7 @@ The following curves compare the training dynamics of the tested LoRA fine-tunin
 
 ### Training Loss
 
-![Training Loss Curves](assets/lurning_curves/training_loss_curves.png)
+![Training Loss Curves](assets/learning_curves/training_loss_curves.png)
 
 
 ## Main Observations
