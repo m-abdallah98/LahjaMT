@@ -38,17 +38,18 @@ Best systems are compared against each other:
 
 ## Results on EG Subset (1118 samples)
 
-| System                   | BLEU | chrF | chrF++ | Semantic Similarity |
-| -------------------------| ---: | ---: | -----: | ------------------: |
-| Gemma-4-E2B-it Base      |**14.55** | **44.96** | **41.91** | **0.952464** |
-| Gemma-4-E2B-it FNN-r8 MLP| 13.37 | 43.16 | 40.14 | 0.949918 |
-| Qwen3.5-2B LoRA all-r16  | 8.56 | 37.91 | 34.57 | 0.943186 |
-| Qwen3-4B LoRA Base 2shot all-r16 | 10.11 | 38.16 | 35.44 | 0.944603 |
-| Qwen3-4B LoRA Base zero-shot prompting all-r16 | 9.83 | 37.89 | 35.05 | 0.944039 |
-| Qwen3-4B Base            | 2.59 | 26.77 | 23.48 | 0.924230 |
-| Qwen3.5-2B Base          | 2.37 | 26.52 | 23.24 | 0.923324 |
-| Qwen3-4B Base few-shot prompting   | 2.33 | 25.91 | 22.80 | 0.920058 |
-| Qwen3-4B instruct few-shot prompting   | 3.19 | 28.44 | 25.11 | 0.929894 |
+| System                                      | BLEU | spBLEU | chrF | chrF++ | Semantic Similarity |
+| ------------------------------------------- | ---: | -----: | ---: | -----: | ------------------: |
+| Gemma-4-E2B-it Base                         | **14.55** | **26.85** | **44.96** | **41.91** | **0.952464** |
+| Gemma-4-E2B-it FNN-r8 MLP                   | 13.37 | 25.23 | 43.16 | 40.14 | 0.949918 |
+| Qwen3.5-2B LoRA all-r16                     | 8.56 | 18.59 | 37.91 | 34.57 | 0.943186 |
+| Qwen3-4B LoRA Base 2shot all-r16            | 10.11 | 19.70 | 38.16 | 35.44 | 0.944603 |
+| Qwen3-4B LoRA Base zero-shot prompting all-r16 | 9.83 | 19.52 | 37.89 | 35.05 | 0.944039 |
+| Qwen3-4B Base                               | 2.59 | 8.10 | 26.77 | 23.48 | 0.924230 |
+| Qwen3.5-2B Base                             | 2.37 | 7.81 | 26.52 | 23.24 | 0.923324 |
+| Qwen3-4B Base few-shot prompting            | 2.33 | 7.36 | 25.91 | 22.80 | 0.920058 |
+| Qwen3-4B instruct few-shot prompting        | 3.19 | 9.85 | 28.44 | 25.11 | 0.929894 |
+
 
 ### Evaluation Metrics
 
@@ -87,6 +88,29 @@ where:
 
 - $c$ is the generated translation length.
 - $r$ is the reference translation length.
+
+---
+### spBLEU
+
+spBLEU, or SentencePiece BLEU, is a BLEU variant that first tokenizes the generated translation and the reference using a SentencePiece subword tokenizer, then computes the standard BLEU score on these subword tokens. It is useful for multilingual and morphologically rich translation tasks because it avoids depending only on whitespace-based word tokenization.
+
+Higher spBLEU is better.
+
+```math
+\mathrm{spBLEU}
+=
+\mathrm{BP}
+\cdot
+\exp
+\left(
+\sum_{n=1}^{N} w_n \log p_n
+\right)
+where:
+
+- $\mathrm{BP}$ is the brevity penalty.
+- $p_n$ is the modified precision for SentencePiece-tokenized $n$-grams.
+- $w_n$ is the weight for each $n$-gram order, commonly uniform.
+- $N$ is usually 4, as in standard BLEU.
 
 ---
 
