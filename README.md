@@ -105,6 +105,8 @@ Higher spBLEU is better.
 \left(
 \sum_{n=1}^{N} w_n \log p_n
 \right)
+```
+
 where:
 
 - $\mathrm{BP}$ is the brevity penalty.
