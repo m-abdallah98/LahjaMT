@@ -40,6 +40,7 @@ Best systems are compared against each other:
 
 | System                                      | BLEU | spBLEU | chrF | chrF++ | Semantic Similarity |
 | ------------------------------------------- | ---: | -----: | ---: | -----: | ------------------: |
+| Task Baseline("UBC-NLP/NileChat-3B-Base")              | ... | **26.85** | ...| **41.45**| ... |
 | Gemma-4-E2B-it Base                         | **14.55** | **26.85** | **44.96** | **41.91** | **0.952464** |
 | Gemma-4-E2B-it FNN-r8 MLP                   | 13.37 | 25.23 | 43.16 | 40.14 | 0.949918 |
 | Qwen3.5-2B LoRA all-r16                     | 8.56 | 18.59 | 37.91 | 34.57 | 0.943186 |
