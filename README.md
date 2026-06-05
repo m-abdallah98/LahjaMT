@@ -59,36 +59,6 @@ BLEU measures how much the generated translation overlaps with the reference tra
 
 Higher BLEU is better.
 
-```math
-\mathrm{BLEU}
-=
-\mathrm{BP}\cdot
-\exp\left(
-\sum_{n=1}^{N} w_n \log p_n
-\right)
-```
-
-where:
-
-- $p_n$ is the modified precision for n-grams of order $n$.
-- $w_n$ is the weight assigned to n-gram order $n$, usually $\frac{1}{N}$.
-- $\mathrm{BP}$ is the brevity penalty.
-
-The brevity penalty is:
-
-```math
-\mathrm{BP} =
-\begin{cases}
-1, & c > r \\
-\exp\left(1 - \frac{r}{c}\right), & c \le r
-\end{cases}
-```
-
-where:
-
-- $c$ is the generated translation length.
-- $r$ is the reference translation length.
-
 ---
 ### spBLEU
 
@@ -113,6 +83,21 @@ where:
 - $p_n$ is the modified precision for SentencePiece-tokenized $n$-grams.
 - $w_n$ is the weight for each $n$-gram order, commonly uniform.
 - $N$ is usually 4, as in standard BLEU.
+
+The brevity penalty is:
+
+```math
+\mathrm{BP} =
+\begin{cases}
+1, & c > r \\
+\exp\left(1 - \frac{r}{c}\right), & c \le r
+\end{cases}
+```
+
+where:
+
+- $c$ is the generated translation length.
+- $r$ is the reference translation length.
 
 ---
 
