@@ -38,7 +38,7 @@ Best systems are compared against each other:
 
 ## Results on EG Subset (1118 samples)
 
-```md
+
 | System                                      | BLEU | spBLEU | chrF | chrF++ | Semantic Similarity |
 | ------------------------------------------- | ---: | -----: | ---: | -----: | ------------------: |
 | Task Baseline: UBC-NLP/NileChat-3B-Base-LoRA-r16 | ... | **26.85** | ... | **41.45** | ... |
@@ -52,7 +52,7 @@ Best systems are compared against each other:
 | Qwen3-4B Base                               | 2.59 | 8.10 | 26.77 | 23.48 | 0.924230 |
 | Qwen3.5-2B Base                             | 2.37 | 7.81 | 26.52 | 23.24 | 0.923324 |
 | Qwen3-4B Base few-shot prompting            | 2.33 | 7.36 | 25.91 | 22.80 | 0.920058 |
-```
+
 
 
 ### Evaluation Metrics
