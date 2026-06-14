@@ -38,18 +38,21 @@ Best systems are compared against each other:
 
 ## Results on EG Subset (1118 samples)
 
+```md
 | System                                      | BLEU | spBLEU | chrF | chrF++ | Semantic Similarity |
 | ------------------------------------------- | ---: | -----: | ---: | -----: | ------------------: |
-| Task Baseline("UBC-NLP/NileChat-3B-Base")              | ... | **26.85** | ...| **41.45**| ... |
+| Task Baseline: UBC-NLP/NileChat-3B-Base-LoRA-r16 | ... | **26.85** | ... | **41.45** | ... |
 | Gemma-4-E2B-it Base                         | **14.55** | **26.85** | **44.96** | **41.91** | **0.952464** |
 | Gemma-4-E2B-it FNN-r8 MLP                   | 13.37 | 25.23 | 43.16 | 40.14 | 0.949918 |
-| Qwen3.5-2B LoRA all-r16                     | 8.56 | 18.59 | 37.91 | 34.57 | 0.943186 |
 | Qwen3-4B LoRA Base 2shot all-r16            | 10.11 | 19.70 | 38.16 | 35.44 | 0.944603 |
 | Qwen3-4B LoRA Base zero-shot prompting all-r16 | 9.83 | 19.52 | 37.89 | 35.05 | 0.944039 |
+| Qwen3.5-2B LoRA all-r16                     | 8.56 | 18.59 | 37.91 | 34.57 | 0.943186 |
+| UBC-NLP/NileChat-3B  | 7.04 | 14.82 | 32.53 | 29.44 | 0.923868 |
+| Qwen3-4B instruct few-shot prompting        | 3.19 | 9.85 | 28.44 | 25.11 | 0.929894 |
 | Qwen3-4B Base                               | 2.59 | 8.10 | 26.77 | 23.48 | 0.924230 |
 | Qwen3.5-2B Base                             | 2.37 | 7.81 | 26.52 | 23.24 | 0.923324 |
 | Qwen3-4B Base few-shot prompting            | 2.33 | 7.36 | 25.91 | 22.80 | 0.920058 |
-| Qwen3-4B instruct few-shot prompting        | 3.19 | 9.85 | 28.44 | 25.11 | 0.929894 |
+```
 
 
 ### Evaluation Metrics
@@ -220,32 +223,3 @@ The following curves compare the training dynamics of the tested LoRA fine-tunin
 
 ![Training Loss Curves](assets/learning_curves/training_loss_curves.png)
 
-
-## Main Observations
-
-1. **Gemma-4-E2B-it Base is the strongest system overall.**  
-   It achieves the best scores across all metrics: **BLEU = 14.55**, **chrF = 44.96**, **chrF++ = 41.91**, and **Semantic Similarity = 0.952464** (however it is 5.1 B).
-
-2. **Gemma fine-tuning did not improve over the base model.**  
-   The Gemma FNN-r8 MLP LoRA model performs slightly lower than the Gemma base model, with **BLEU dropping from 14.55 to 13.37** partly due to conservative lr against other experiments and partly due to small-data finetuning regarding the params number specially with strong base model.
-
-3. **LoRA fine-tuning strongly improves Qwen models.**  
-   Qwen3.5-2B improves from **BLEU = 2.37** to **8.56**, while Qwen3-4B improves from **BLEU = 2.59** to **10.11** with the best LoRA 2-shot setup.
-
-4. **Few-shot prompting alone is not enough.**  
-   Qwen3-4B few-shot prompting without fine-tuning remains weak, with **BLEU = 2.33** for base few-shot and **3.19** for instruct few-shot, showing that the main improvement comes from LoRA fine-tuning.
-
-
-
-
-## Interpretation
-
-
-1. **Qwen models benefit clearly from LoRA fine-tuning.**  
-   Since Qwen starts from a weak baseline, fine-tuning gives large improvements in BLEU, chrF, chrF++, and semantic similarity.
-
-2. **Gemma is already strong without fine-tuning.**  
-   The Gemma base model performs best overall, so small-data LoRA fine-tuning slightly reduces performance instead of improving it.
-
-3. **Data size may be a critical factor.**  
-   These results suggest that fine-tuning is not automatically beneficial, especially when the base model already has strong translation and instruction-following ability.
