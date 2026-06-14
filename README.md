@@ -47,6 +47,7 @@ ordered by spBLEU
 | Gemma-4-E2B-it FNN-r8 MLP                   | 13.37 | 25.23 | 43.16 | 40.14 | 0.949918 |
 | Qwen3-4B LoRA Base 2shot all-r16            | 10.11 | 19.70 | 38.16 | 35.44 | 0.944603 |
 | Qwen3-4B LoRA Base zero-shot prompting all-r16 | 9.83 | 19.52 | 37.89 | 35.05 | 0.944039 |
+| Nile_Chat_3B_fewshots_NTK_gates10k_score256_examples | 9.32 | 19.41 | 38.05 | 34.81 | ... |
 | Qwen3.5-2B LoRA all-r16                     | 8.56 | 18.59 | 37.91 | 34.57 | 0.943186 |
 | UBC-NLP/NileChat-3B  | 7.04 | 14.82 | 32.53 | 29.44 | 0.923868 |
 | Qwen3-4B instruct few-shot prompting        | 3.19 | 9.85 | 28.44 | 25.11 | 0.929894 |
