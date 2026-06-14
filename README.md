@@ -36,7 +36,7 @@ Best systems are compared against each other:
 
 - More experiments are in the notebooks
 
-## Results on EG Subset (1118 samples)
+## Results on EG Subset (1118 samples ordered by spBLEU)
 
 
 | System                                      | BLEU | spBLEU | chrF | chrF++ | Semantic Similarity |
