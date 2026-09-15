@@ -1,0 +1,33 @@
+# === Paper artifacts (kept local, not part of the code repo) ===
+*.pdf
+*.zip
+*.docx
+*.doc
+acl_latex.tex
+paper/
+LahjaMT_submission/
+LahjaMT_submission_v2/
+Claude outputs/
+team_access_guide.*
+
+# === Prediction bundles / submission outputs ===
+Test_Submissions/
+**/submission_predictions*.zip
+
+# === Notebook junk ===
+**/Untitled*.ipynb
+**/*.executed.ipynb
+**/~$*
+**/.ipynb_checkpoints/
+
+# === OS / Python / env ===
+.DS_Store
+Thumbs.db
+__pycache__/
+*.py[cod]
+.venv/
+env/
+.env
+
+# Stale duplicate of the old EG-only README (superseded by the root README)
+Server_NoteBooks/README.md
