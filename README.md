@@ -15,6 +15,7 @@ Dialectal Arabic Machine Translation** (Subtask 1), presented at the Fourth Arab
 - 📄 **Paper:** `LahjaMT at AlexandriaX-2026` (camera-ready included in the release notes)
 - 🤗 **Model (LoRA adapters + routing + inference):** [`MohamedAbdallah98/LahjaMT`](https://huggingface.co/MohamedAbdallah98/LahjaMT)
 - 💻 **Code:** this repository
+- ▶️ **Try it in Colab:** [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/m-abdallah98/LahjaMT/blob/main/examples/LahjaMT_demo.ipynb)
 
 ---
 
@@ -125,6 +126,9 @@ there for load-and-generate instructions (PEFT over `UBC-NLP/NileChat-3B-Base`).
 The published model routes **each dialect to its best expert** — the full-power configuration, with the
 Libyan/Sudanese SMOL specialists included. Users select only a target dialect; the constrained vs.
 unconstrained *tracks* below are a shared-task distinction, not something you choose at inference.
+
+The quickest way to try it is the Colab notebook — [`examples/LahjaMT_demo.ipynb`](examples/LahjaMT_demo.ipynb) —
+which exposes a one-line `translate(text, dialect)` helper (prompting and few-shot handled internally).
 
 ---
 
