@@ -122,6 +122,10 @@ The trained LoRA adapters, the routing table, prompt templates, and an inference
 Hugging Face: [`MohamedAbdallah98/LahjaMT`](https://huggingface.co/MohamedAbdallah98/LahjaMT). See the model card
 there for load-and-generate instructions (PEFT over `UBC-NLP/NileChat-3B-Base`).
 
+The published model routes **each dialect to its best expert** — the full-power configuration, with the
+Libyan/Sudanese SMOL specialists included. Users select only a target dialect; the constrained vs.
+unconstrained *tracks* below are a shared-task distinction, not something you choose at inference.
+
 ---
 
 ## Citation
