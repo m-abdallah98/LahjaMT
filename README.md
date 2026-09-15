@@ -13,7 +13,7 @@ Dialectal Arabic Machine Translation** (Subtask 1), presented at the Fourth Arab
 > `gpt-oss-20b` and `gpt-oss-120b` models — underscoring the value of task-specific adaptation over scale.
 
 - 📄 **Paper:** `LahjaMT at AlexandriaX-2026` (camera-ready included in the release notes)
-- 🤗 **Model (LoRA adapters + routing + inference):** [`m-abdallah98/LahjaMT`](https://huggingface.co/m-abdallah98/LahjaMT)
+- 🤗 **Model (LoRA adapters + routing + inference):** [`MohamedAbdallah98/LahjaMT`](https://huggingface.co/MohamedAbdallah98/LahjaMT)
 - 💻 **Code:** this repository
 
 ---
@@ -119,7 +119,7 @@ The project is organized as a set of Jupyter notebooks documenting each stage of
 ## Using the model
 
 The trained LoRA adapters, the routing table, prompt templates, and an inference script are published on
-Hugging Face: [`m-abdallah98/LahjaMT`](https://huggingface.co/m-abdallah98/LahjaMT). See the model card
+Hugging Face: [`MohamedAbdallah98/LahjaMT`](https://huggingface.co/MohamedAbdallah98/LahjaMT). See the model card
 there for load-and-generate instructions (PEFT over `UBC-NLP/NileChat-3B-Base`).
 
 ---
